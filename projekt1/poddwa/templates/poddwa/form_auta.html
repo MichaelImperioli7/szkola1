@@ -1,0 +1,12 @@
+{% extends 'poddwa/base.html' %}
+{% block title %}Form{% endblock %}
+{% block content %}
+<p>
+    Formularz
+</p>
+<form action="" method='POST'>
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit">Dodaj</button>
+</form>
+{% endblock %}

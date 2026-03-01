@@ -1,0 +1,17 @@
+{% extends 'appmonday/base.html' %}
+{% block title %}Show{% endblock %}
+{% block content %}
+<p>
+    Wyniki
+</p>
+<ul>
+    <li>Imię: {{ name }}</li>
+    <li>Nazwisko: {{ nazwisko }}</li>
+    <li>Email: {{ email }}</li>
+    <li>Telefon: {{ nr_telefonu }}</li>
+    <li>Wykształcenie: {{ wyksztalcenie }}</li>
+</ul>
+
+<a href="{% url 'form' %}">Wróć do formularza</a><br>
+<a href="{% url 'index' %}">Index</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'poddwa/base.html' %}
+{% load static %}
+{% block title%}Auto{% endblock %}
+{% block content %}
+<ul>
+    <li>{{ auto_info.marka }} </li>
+    <li>{{ auto_info.model }} </li>
+    <li>{{ auto_info.rok }} </li>
+    <img src="{% static 'images/' %}{{auto_info.id}}.png">
+</ul>
+{% endblock %}

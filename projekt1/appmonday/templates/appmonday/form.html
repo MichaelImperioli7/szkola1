@@ -1,0 +1,40 @@
+{% extends 'appmonday/base.html' %}
+{% block title %}Form{% endblock title %}
+{% block content %}
+<p>
+    Formularz
+</p>
+<form action="{% url 'show' %}" method="post">
+{% csrf_token %}
+    <label for="input_name">Imię: </label>
+    <input type="text" name="input_name">
+    <br>
+    <label for="input_nazwisko">Nazwisko: </label>
+    <input type="text" name="input_nazwisko">
+    <br>
+    <label for="input_email">Email: </label>
+    <input type="email" name="input_email">
+    <br>
+    <label for="input_nr_telefonu">Numer telefonu: </label>
+    <input type="text" name="input_nr_telefonu">
+    <br>
+    <label>Wykształcenie:</label><br>
+    <input type="radio" name="input_wyksztalcenie" value="podstawowe" checked> podstawowe<br>
+    <input type="radio" name="input_wyksztalcenie" value="srednie"> średnie<br>
+    <input type="radio" name="input_wyksztalcenie" value="wyzsze"> wyższe<br>
+    <br>
+    <button type="submit">Wyślij</button>
+
+    {# error list #}
+    {% if errors %}
+        <ul class="errors">
+        {% for field, message in errors.items %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</form>
+
+
+<a href="{% url 'index' %}">Index</a>
+{% endblock content %}
