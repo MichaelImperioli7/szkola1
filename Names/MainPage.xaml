@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp6.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="10"
+            Spacing="5"
+            WidthRequest="500">
+            <CollectionView x:Name="CollectionView_1"/>
+            <Entry x:Name="Entry_1"
+                   Placeholder="Enter your name"/>
+            <Button x:Name="Button_1"
+                    Text="Submit"
+                    Clicked="Button_Clicked"/>
+            <Label x:Name="Names_counter"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

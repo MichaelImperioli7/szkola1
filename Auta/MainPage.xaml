@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auta.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <CollectionView x:Name="Lista"
+                            ItemsSource="{Binding Auta}"
+                            SelectionMode="Single"
+                            SelectionChanged="Lista_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10">
+                            <Border.Triggers>
+                                <DataTrigger TargetType="Border" Binding="{Binding Cena}" Value="100000">
+                                    <Setter Property="BackgroundColor" Value="LightPink"/>
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <VerticalStackLayout Spacing="6">
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="{Binding Marka}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Model}" FontAttributes="Bold"/>
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding Cena, StringFormat='Cena: {0} zł'}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label x:Name="Informacja"
+                   Text="Nic nie wybrano"/>
+            <Border Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Edycja wybranego auta" FontAttributes="Bold"/>
+                    <Entry
+                        Text="{Binding Source={x:Reference Lista}, Path=SelectedItem.Marka, Mode=TwoWay}"
+                        Placeholder="Marka"/>
+                    <Entry
+                        Text="{Binding Source={x:Reference Lista}, Path=SelectedItem.Model, Mode=TwoWay}"
+                        Placeholder="Model"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Stepper Minimum="0"
+                             Maximum="200000"
+                             Increment="1000"
+                             Value="{Binding Source={x:Reference Lista}, Path=SelectedItem.Cena, Mode=TwoWay}"/>
+                        <Label Text="{Binding Source={x:Reference Lista}, Path=SelectedItem.Cena, StringFormat='Cena: {0} zł.'}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
