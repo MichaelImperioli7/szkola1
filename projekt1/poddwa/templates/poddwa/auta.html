@@ -1,0 +1,24 @@
+{% extends 'poddwa/base.html' %}
+{% block title %}Auta{% endblock %}
+{% block content %}
+<p>
+    Auta
+</p>
+{% if auta %}
+    <table>
+        {% for auto in auta %}
+            <tr>
+                <td>{{ auto.id }}</td>
+                <td>{{ auto.marka }}</td>
+                <td>{{ auto.model }}</td>
+                <td>{{ auto.rok }}</td>
+                <td><a href="{% url 'auto_info' auto.id %}">informacje</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>
+        brak aut
+    </p>
+{% endif %}
+{% endblock %}

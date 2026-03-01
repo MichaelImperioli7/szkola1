@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+    <br><br><a href="{% url 'people' %}">People</a>
+    <a href="{% url 'auta' %}">auta</a>
+    <br>
+    <a href="{% url 'form_auta' %}">dodaj auta</a>
+    <a href="{% url 'new' %}">dodaj osoby</a>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'poddwa/base.html' %}
+{% block title %}Usuń {{ person.imie }}{% endblock %}
+{% block content %}
+<h2>Czy na pewno chcesz usunąć {{ person.imie }}?</h2>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Usuń</button>
+    <a href="{% url 'people' %}">Anuluj</a>
+</form>
+{% endblock %}

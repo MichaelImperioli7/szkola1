@@ -1,0 +1,32 @@
+{% extends 'poddwa/base.html' %}
+{% block title %}Lista osób{% endblock %}
+{% block content %}
+<h2>Lista osób</h2>
+<a href="{% url 'new' %}">Dodaj nową osobę</a>
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Imię</th>
+        <th>Data urodzenia</th>
+        <th>Email</th>
+        <th>Wzrost</th>
+        <th>Akcje</th>
+    </tr>
+    {% for person in all_people %}
+    <tr>
+        <td>{{ person.imie }}</td>
+        <td>{{ person.data_urodzenia }}</td>
+        <td>{{ person.email }}</td>
+        <td>{{ person.wzrost }}</td>
+        <td>
+            <a href="{% url 'person_details' person.id %}">Szczegóły</a> |
+            <a href="{% url 'person_edit' person.id %}">Edytuj</a> |
+            <a href="{% url 'person_delete' person.id %}">Usuń</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">Brak osób w bazie</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

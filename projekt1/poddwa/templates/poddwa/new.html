@@ -1,0 +1,15 @@
+{% extends 'poddwa/base.html' %}
+{% block title %}Nowa osoba{% endblock %}
+{% block content %}
+<h2>Dodaj nową osobę</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj</button>
+    <a href="{% url 'people' %}">Anuluj</a>
+</form>
+
+{% if error_message %}
+<p style="color:red;">{{ error_message }}</p>
+{% endif %}
+{% endblock %}
