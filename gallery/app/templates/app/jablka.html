@@ -1,0 +1,48 @@
+{% extends 'app/base.html '%}
+{% load static %}
+{% block title %}Jablka{% endblock %}
+{% block content %}
+<script>
+    function pobierz(url) {
+        let n = document.createElement('a');
+        n.href = url;
+        n.download = '';
+        n.click();
+        // robi link i go klika zeby pobrac
+    }
+</script>
+<div class="container">
+    <div class="row g-3">
+        <!-- g to gap, odstep -->
+
+        <div class="col-12">
+            <form method="GET">
+                <input type="text" name="filtr" value="{{ filtr }}" placeholder="Szukaj" class="form-control">
+            </form>
+        </div>
+
+        {% for photo in photos %}
+        <div class="col-12 col-md-4">
+            <!-- ponizej wielkosci medium columna zajmuje 12 miejsc, powyzej 4 -->
+
+            <div class="card p-3 h-100 text-center">
+                <!-- h-100 to height:100% p-3 to padding:3 -->
+
+                {% if forloop.counter <= 3 %}
+                    <span class="badge bg-success text-light mb-2">TOP {{ forloop.counter }}</span>
+                {% endif %}
+                <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+                <div class="mt-auto pt-2">
+                    <!-- mt-auto to margin-top:auto; -->
+
+                    <a href="{% url 'download' photo.pk %}" class="btn btn-primary btn-sm" onclick="pobierz('{{ photo.image.url }}')">Pobierz</a>
+                    <small class="text-muted d-block mt-2">
+                        Pobrano: {{ photo.downloads }} razy.
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
