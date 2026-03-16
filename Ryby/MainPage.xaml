@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp7.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <HorizontalStackLayout
+                Spacing="5">
+                <Entry x:Name="EntryImie"
+                    Placeholder="Imie"/>
+                
+                <Entry x:Name="EntryNazwisko"
+                       Placeholder="Nazwisko"/>
+                
+                <Entry x:Name="EntryLowisko"
+                    Placeholder="Lowisko"/>
+                
+                <Entry x:Name="EntryGatunekRyby"
+                    Placeholder="Gatunek ryby"/>
+                
+                <Entry x:Name="EntryWaga"
+                       Keyboard="Numeric"
+                    Placeholder="Waga"/>
+                <Button Text="Dodaj połów"
+                        Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+            <Button Text="Usun wszystkie rekordy"
+                    Clicked="Button_Clicked_1"/>
+            <CollectionView x:Name="Kolekcja"
+                            ItemsSource="{Binding Polowy}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="7"
+                                Margin="10, 0, 0, 10">
+                            <VerticalStackLayout>
+                                <Label>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0}, {1}">
+                                            <Binding Path="Imie"/>
+                                            <Binding Path="Nazwisko"/>
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Label Text="{Binding Lowisko}"/>
+                                <Label Text="{Binding GatunekRyby}"/>
+                                <Label Text="{Binding Waga, StringFormat='Waga: {0} kg.'}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
