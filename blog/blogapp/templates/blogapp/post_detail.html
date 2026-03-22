@@ -1,0 +1,28 @@
+{% extends 'blogapp/base.html' %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+<small>{{ post.created_at }}</small>
+<p>{{ post.content }}</p>
+<a href="{% url 'index' %}">Wróć do listy</a>
+
+<hr>
+<h3>Komentarze</h3>
+{% if comments %}
+    {% for comment in comments %}
+        <div>
+            <strong>{{ comment.author_name }}</strong>
+            <small>{{ comment.created_at }}</small>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Brak komentarzy</p>
+{% endif %}
+
+<h4>Dodaj komentarz</h4>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj komentarz</button>
+</form>
+{% endblock %}

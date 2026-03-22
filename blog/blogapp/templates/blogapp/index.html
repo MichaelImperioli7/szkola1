@@ -1,0 +1,19 @@
+{% extends 'blogapp/base.html' %}
+{% load static %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<h1>Mini blog klasowy</h1>
+
+{% if posts %}
+    {% for post in posts %}
+        <div>
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <small>{{ post.created_at }}</small>
+            <p>{{ post.content|truncatechars:100 }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Brak postów</p>
+{% endif %}
+<br><a href="{% url 'new_post' %}">Nowy post</a>
+{% endblock %}
