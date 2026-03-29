@@ -1,0 +1,22 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+{% block title %}{{ recipe.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ recipe.name }}</h1>
+
+{% if recipe.photo %}
+<img src="{{ recipe.photo.url }}" class="img-fluid mb-3" alt="{{ recipe.name }}">
+{% endif %}
+
+<p>{{ recipe.description }}</p>
+<p><strong>Czas:</strong> {{ recipe.prep_time }} min</p>
+{% if recipe.servings %}
+<p><strong>Porcje:</strong> {{ recipe.servings }}</p>
+{% endif %}
+<p><strong>Dodano:</strong> {{ recipe.created_at|date:"d.m.Y" }}</p>
+
+<a href="{% url 'edit_recipe' recipe.pk %}" class="btn btn-warning">Edytuj</a>
+<a href="{% url 'delete_recipe' recipe.pk %}" class="btn btn-danger">Usuń</a>
+<a href="{% url 'index' %}" class="btn btn-secondary">Powrót</a>
+{% endblock %}
