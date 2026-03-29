@@ -1,0 +1,27 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+{% block title %}Przepisy{% endblock %}
+{% block content %}
+<h1>Przepisy</h1>
+
+{% if recipes %}
+<div class="row">
+    {% for recipe in recipes %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            {% if recipe.photo %}
+            <img src="{{ recipe.photo.url }}" class="card-img-top" alt="{{ recipe.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ recipe.name }}</h5>
+                <p>Czas: {{ recipe.prep_time }} min</p>
+                <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-primary">Zobacz</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>Brak przepisów.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block title %}Edytuj{% endblock %}
+
+{% block content %}
+<h1>Edytuj przepis</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-secondary">Anuluj</a>
+</form>
+{% endblock %}
