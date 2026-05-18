@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="monety.MainPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="15"
+                             HorizontalOptions="Center">
+            <Button Text="RZUĆ MONETAMI"
+                    HorizontalOptions="Center"
+                    Clicked="Button_Rzut_Clicked"/>
+
+            <HorizontalStackLayout Spacing="10"
+                                   HorizontalOptions="Center">
+                <ImageButton x:Name="moneta1"
+                             Source="moneta.png"
+                             Clicked="moneta_Clicked"
+                             HeightRequest="80"
+                             WidthRequest="80"/>
+                <ImageButton x:Name="moneta2"
+                             Source="moneta.png"
+                             Clicked="moneta_Clicked"
+                             HeightRequest="80" 
+                             WidthRequest="80"/>
+                <ImageButton x:Name="moneta3"
+                             Source="moneta.png"
+                             Clicked="moneta_Clicked"
+                             HeightRequest="80"
+                             WidthRequest="80"/>
+                <ImageButton x:Name="moneta4"
+                             Source="moneta.png" 
+                            Clicked="moneta_Clicked"
+                             HeightRequest="80"
+                             WidthRequest="80"/>
+                <ImageButton x:Name="moneta5"
+                             Source="moneta.png"
+                             Clicked="moneta_Clicked"
+                             HeightRequest="80"
+                             WidthRequest="80"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Wynik tego rzutu:"
+                   HorizontalOptions="Center"/>
+
+            <Label x:Name="wynik_label"
+                   Text="0"
+                   FontSize="40"
+                   HorizontalOptions="Center"/>
+
+            <Button Text="RESETUJ"
+                    Margin="10"
+                    HorizontalOptions="Center"
+                    Clicked="Button_Resetuj_Clicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
